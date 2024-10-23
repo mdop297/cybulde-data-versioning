@@ -1,0 +1,6 @@
+*
+
+!docker
+!src
+!pyproject.toml
+!poetry.lock
