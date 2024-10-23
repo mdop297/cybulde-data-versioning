@@ -27,8 +27,8 @@ guard-%:
 	@#$(or ${$*}, $(error $* is not set))
 
 ## Call entrypoint
-entrypoint: up
-	$(DOCKER_COMPOSE_EXEC) python ./src/entrypoint.py
+version-data: up
+	$(DOCKER_COMPOSE_EXEC) python ./src/version_data.py
 
 ## Starts jupyter lab
 notebook: up
@@ -77,7 +77,6 @@ build:
 build-for-dependencies:
 	rm -f *.lock
 	$(DOCKER_COMPOSE) build $(SERVICE_NAME)
-	docker rmi $(docker images -qa -f "dangling=true")
 
 ## Lock dependencies with poetry
 lock-dependencies: build-for-dependencies
