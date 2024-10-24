@@ -1,7 +1,7 @@
 from pathlib import Path
 from subprocess import CalledProcessError
-from src.utils.utils import get_logger, run_shell_command
 
+from src.utils.utils import get_logger, run_shell_command
 
 DATA_UTILS_LOGGER = get_logger(__name__)
 
