@@ -34,6 +34,7 @@ def initialize_dvc_storage(dvc_remote_name: str, dvc_remote_url: str) -> None:
 
 
 def commit_to_dvc(dvc_raw_data_folder: str, dvc_remote_name: str) -> None:
+    DATA_UTILS_LOGGER.info("Pushing data to remote storage and code to github...")
     current_version = run_shell_command("git tag --list | sort -t v -k 2 -g | tail -1 | sed 's/v//'").strip()
     if not current_version:
         current_version = "0"
@@ -45,6 +46,7 @@ def commit_to_dvc(dvc_raw_data_folder: str, dvc_remote_name: str) -> None:
     run_shell_command(f"dvc push {dvc_raw_data_folder}.dvc --remote {dvc_remote_name}")
     run_shell_command("git push --follow-tags")
     run_shell_command("git push -f --tags")
+    DATA_UTILS_LOGGER.info("Pushing done!")
 
 
 def make_new_data_version(dvc_raw_data_folder: str, dvc_remote_name: str) -> None:
