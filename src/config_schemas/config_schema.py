@@ -4,7 +4,9 @@ from pydantic.dataclasses import dataclass
 
 @dataclass
 class Config:
-    key: str = "value"
+    dvc_remote_name: str = "gcs-storage"
+    dvc_remote_url: str = "gs://cybulde_bucket/data/raw"
+    dvc_raw_data_folder: str = "data/raw"
 
 
 def setup_config():
